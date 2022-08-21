@@ -16,7 +16,7 @@ class CommandRegister {
     const cn = `${globalExtId}.search.${name}` as const
     const d = this.#enabled.get(cn)
     if (d) d.dispose()
-    else commands.executeCommand('setContext', `${cn}._anabled`, true)
+    else commands.executeCommand('setContext', `${cn}._enabled`, true)
     this.#enabled.set(cn, commands.registerCommand(cn, handler))
   }
 
@@ -30,14 +30,14 @@ class CommandRegister {
     if (d) {
       d.dispose()
       this.#enabled.delete(cn)
-      commands.executeCommand('setContext', `${cn}._anabled`, false)
+      commands.executeCommand('setContext', `${cn}._enabled`, false)
     }
   }
 
   deactivate (): void {
     for (const [cn, d] of this.#enabled) {
       d.dispose()
-      commands.executeCommand('setContext', `${cn}._anabled`, false)
+      commands.executeCommand('setContext', `${cn}._enabled`, false)
     }
     this.#enabled.clear()
   }

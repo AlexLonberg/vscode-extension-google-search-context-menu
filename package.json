@@ -109,12 +109,12 @@
         {
           "command": "googleSearchContextMenu.search.Google",
           "group": "navigation@-99",
-          "when": "googleSearchContextMenu.search.Google._anabled && editorHasSelection"
+          "when": "googleSearchContextMenu.search.Google._enabled && editorHasSelection"
         },
         {
           "submenu": "googleSearchContextMenu.submenu",
           "group": "navigation@-99",
-          "when": "googleSearchContextMenu.search.SubitemGoogle._anabled && editorHasSelection"
+          "when": "googleSearchContextMenu.search.SubitemGoogle._enabled && editorHasSelection"
         }
       ],
       "googleSearchContextMenu.submenu": [
@@ -125,37 +125,37 @@
         {
           "command": "googleSearchContextMenu.search.StackOverflow",
           "group": "navigation@2",
-          "when": "googleSearchContextMenu.search.StackOverflow._anabled"
+          "when": "googleSearchContextMenu.search.StackOverflow._enabled"
         },
         {
           "command": "googleSearchContextMenu.search.Microsoft",
           "group": "navigation@3",
-          "when": "googleSearchContextMenu.search.Microsoft._anabled"
+          "when": "googleSearchContextMenu.search.Microsoft._enabled"
         },
         {
           "command": "googleSearchContextMenu.search.RustLang",
           "group": "navigation@4",
-          "when": "googleSearchContextMenu.search.RustLang._anabled"
+          "when": "googleSearchContextMenu.search.RustLang._enabled"
         },
         {
           "command": "googleSearchContextMenu.search.Python",
           "group": "navigation@5",
-          "when": "googleSearchContextMenu.search.Python._anabled"
+          "when": "googleSearchContextMenu.search.Python._enabled"
         },
         {
           "command": "googleSearchContextMenu.search.GoLang",
           "group": "navigation@6",
-          "when": "googleSearchContextMenu.search.GoLang._anabled"
+          "when": "googleSearchContextMenu.search.GoLang._enabled"
         },
         {
           "command": "googleSearchContextMenu.search.MDNWeb",
           "group": "navigation@7",
-          "when": "googleSearchContextMenu.search.MDNWeb._anabled"
+          "when": "googleSearchContextMenu.search.MDNWeb._enabled"
         },
         {
           "command": "googleSearchContextMenu.search.NodeJS",
           "group": "navigation@8",
-          "when": "googleSearchContextMenu.search.NodeJS._anabled"
+          "when": "googleSearchContextMenu.search.NodeJS._enabled"
         }
       ]
     },
@@ -170,7 +170,7 @@
       "title": "Google Search",
       "properties": {
         "googleSearchContextMenu.items": {
-          "markdownDescription": "Query String | Enabled | [See help on GitHub](https://github.com/AlexLonberg/vscode-extension-google-search-context-menu)\n\n```json\n\"googleSearchContextMenu.items\": {\n  \"StackOverflow\": {\n    \"queryTemplate\": \"https://www.google.com/search?q={SELECTION} site:https://stackoverflow.com/\",\n    \"enabled\": true\n  },\n  // ... MDNWeb | Microsoft \n} \n```",
+          "markdownDescription": "Query String | Enabled | [See help on GitHub](https://github.com/AlexLonberg/vscode-extension-google-search-context-menu)\n\n```json\n\"googleSearchContextMenu.items\": {\n  \"StackOverflow\": {\n    \"queryTemplate\": \"https://www.google.com/search?q={SELECTION} site:https://stackoverflow.com/\",\n    \"enabled\": true\n  },\n  // Python, Microsoft ... \n} \n```",
           "type": "object",
           "properties": {
             "StackOverflow": {
