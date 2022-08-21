@@ -1,0 +1,289 @@
+{
+  "name": "google-search-context-menu",
+  "displayName": "🔎︎ Google Search +",
+  "description": "Google search on selected sites",
+  "version": "0.1.0",
+  "author": "Alexander Lonberg <alexlonberg@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexLonberg/vscode-extension-google-search-context-menu.git"
+  },
+  "homepage": "https://github.com/AlexLonberg/vscode-extension-google-search-context-menu",
+  "license": "MIT",
+  "publisher": "lonberg",
+  "engines": {
+    "vscode": "^1.70.2"
+  },
+  "keywords": [
+    "vscode",
+    "search"
+  ],
+  "icon": "assets/icon.png",
+  "categories": [
+    "Other"
+  ],
+  "main": "./app/index.js",
+  "enabledApiProposals": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "googleSearchContextMenu.search.Google",
+        "title": "🔎︎ Google"
+      },
+      {
+        "command": "googleSearchContextMenu.search.SubitemGoogle",
+        "title": "Google"
+      },
+      {
+        "command": "googleSearchContextMenu.search.StackOverflow",
+        "title": "Stack Overflow"
+      },
+      {
+        "command": "googleSearchContextMenu.search.MDNWeb",
+        "title": "MDN Web"
+      },
+      {
+        "command": "googleSearchContextMenu.search.Microsoft",
+        "title": "Microsoft"
+      },
+      {
+        "command": "googleSearchContextMenu.search.RustLang",
+        "title": "Rust"
+      },
+      {
+        "command": "googleSearchContextMenu.search.Python",
+        "title": "Python"
+      },
+      {
+        "command": "googleSearchContextMenu.search.GoLang",
+        "title": "Go"
+      },
+      {
+        "command": "googleSearchContextMenu.search.NodeJS",
+        "title": "Node JS"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "googleSearchContextMenu.search.Google",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.SubitemGoogle",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.StackOverflow",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.MDNWeb",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.Microsoft",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.RustLang",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.Python",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.GoLang",
+          "when": "false"
+        },
+        {
+          "command": "googleSearchContextMenu.search.NodeJS",
+          "when": "false"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "googleSearchContextMenu.search.Google",
+          "group": "navigation@-99",
+          "when": "googleSearchContextMenu.search.Google._anabled && editorHasSelection"
+        },
+        {
+          "submenu": "googleSearchContextMenu.submenu",
+          "group": "navigation@-99",
+          "when": "googleSearchContextMenu.search.SubitemGoogle._anabled && editorHasSelection"
+        }
+      ],
+      "googleSearchContextMenu.submenu": [
+        {
+          "command": "googleSearchContextMenu.search.SubitemGoogle",
+          "group": "navigation@1"
+        },
+        {
+          "command": "googleSearchContextMenu.search.StackOverflow",
+          "group": "navigation@2",
+          "when": "googleSearchContextMenu.search.StackOverflow._anabled"
+        },
+        {
+          "command": "googleSearchContextMenu.search.Microsoft",
+          "group": "navigation@3",
+          "when": "googleSearchContextMenu.search.Microsoft._anabled"
+        },
+        {
+          "command": "googleSearchContextMenu.search.RustLang",
+          "group": "navigation@4",
+          "when": "googleSearchContextMenu.search.RustLang._anabled"
+        },
+        {
+          "command": "googleSearchContextMenu.search.Python",
+          "group": "navigation@5",
+          "when": "googleSearchContextMenu.search.Python._anabled"
+        },
+        {
+          "command": "googleSearchContextMenu.search.GoLang",
+          "group": "navigation@6",
+          "when": "googleSearchContextMenu.search.GoLang._anabled"
+        },
+        {
+          "command": "googleSearchContextMenu.search.MDNWeb",
+          "group": "navigation@7",
+          "when": "googleSearchContextMenu.search.MDNWeb._anabled"
+        },
+        {
+          "command": "googleSearchContextMenu.search.NodeJS",
+          "group": "navigation@8",
+          "when": "googleSearchContextMenu.search.NodeJS._anabled"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "googleSearchContextMenu.submenu",
+        "label": "🔎︎ Google +"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Google Search",
+      "properties": {
+        "googleSearchContextMenu.items": {
+          "markdownDescription": "Query String | Enabled | [See help on GitHub](https://github.com/AlexLonberg/vscode-extension-google-search-context-menu)\n\n```json\n\"googleSearchContextMenu.items\": {\n  \"StackOverflow\": {\n    \"queryTemplate\": \"https://www.google.com/search?q={SELECTION} site:https://stackoverflow.com/\",\n    \"enabled\": true\n  },\n  // ... MDNWeb | Microsoft \n} \n```",
+          "type": "object",
+          "properties": {
+            "StackOverflow": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "queryTemplate": {
+                  "type": "string",
+                  "default": "https://www.google.com/search?q={SELECTION} site:https://stackoverflow.com/"
+                }
+              }
+            },
+            "MDNWeb": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "queryTemplate": {
+                  "type": "string",
+                  "default": "https://www.google.com/search?q={SELECTION} site:https://developer.mozilla.org/"
+                }
+              }
+            },
+            "Microsoft": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "queryTemplate": {
+                  "type": "string",
+                  "default": "https://www.google.com/search?q={SELECTION} site:https://docs.microsoft.com/"
+                }
+              }
+            },
+            "RustLang": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "queryTemplate": {
+                  "type": "string",
+                  "default": "https://www.google.com/search?q={SELECTION} site:https://doc.rust-lang.org/"
+                }
+              }
+            },
+            "Python": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "queryTemplate": {
+                  "type": "string",
+                  "default": "https://www.google.com/search?q={SELECTION} site:https://docs.python.org/"
+                }
+              }
+            },
+            "GoLang": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "queryTemplate": {
+                  "type": "string",
+                  "default": "https://www.google.com/search?q={SELECTION} site:https://go.dev/doc/"
+                }
+              }
+            },
+            "NodeJS": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "queryTemplate": {
+                  "type": "string",
+                  "default": "https://www.google.com/search?q={SELECTION} site:https://nodejs.org/api/"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "precompile": "npm run copy",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "copy": "node ./dist.js",
+    "vsix": "cd ./dist && npx vsce package --out ../vsix/google-search-context-menu-0.1.0.vsix"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.70.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "nodejs-pkg-tools": "^0.3.4",
+    "typescript": "^4.7.4"
+  },
+  "type": "module",
+  "private": true
+}

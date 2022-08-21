@@ -1,0 +1,11 @@
+.git/
+.private/
+.tsbuildinfo/
+**/node_modules/
+.vscode/
+src/
+vsix/
+.eslintrc.json
+.gitignore
+tsconfig.json
+package-lock.json
