@@ -35,16 +35,8 @@ const defaultConfig = {
   }
 }
 
-const configEngineNames = [
-  'StackOverflow',
-  'MDNWeb',
-  'Microsoft',
-  'RustLang',
-  'Python',
-  'GoLang',
-  'NodeJS'
-] as const
-type TConfigEngineNames = (typeof configEngineNames)[number]
+type TConfigEngineNames = keyof (typeof defaultConfig.items)
+const configEngineNames = Object.keys(defaultConfig.items) as TConfigEngineNames[]
 
 const searchEngineNames = [
   'Google',
